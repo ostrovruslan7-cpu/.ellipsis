@@ -1,0 +1,19 @@
+ellipsis:
+  kind: slack
+  name: slack-helper
+
+slack:
+  channels: ['#engineering', '#support']
+  direct_messages: ['*']
+
+session:
+  claude_code:
+    model: claude-opus-5-5
+    prompt: |
+      Read the code before answering. Cite the relevant files and
+      functions, and keep replies short.
+  environment: all-repositories
+  permissions:
+    github: read_only
+  budget:
+    session: 2
