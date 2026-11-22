@@ -1,0 +1,16 @@
+ellipsis:
+  kind: linear
+  name: linear-helper
+
+linear:
+  teams: ['*']
+
+session:
+  claude_code:
+    model: claude-opus-5-5
+    prompt: |
+      Read the issue and relevant code before answering. When asked
+      for a fix, implement it, run the tests, and open a pull request.
+  environment: all-repositories
+  budget:
+    session: 5
