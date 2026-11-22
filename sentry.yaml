@@ -1,0 +1,29 @@
+ellipsis:
+  kind: sentry
+  name: production-errors
+
+sentry:
+  projects: ['*']
+  on: [issue_alert, metric_alert]
+
+session:
+  claude_code:
+    model: claude-opus-5-5
+    prompt: |
+      Investigate the alert and send one report to #eng-ops with the
+      project, Sentry link, impact, and next step. Link the causing
+      pull request only when the evidence supports it.
+  environment:
+    repositories:
+      - name: codex
+      - name: main
+      - name: ra
+      - name: railway
+      - name: s
+      - name: yt
+  mcp_servers:
+    - name: slack
+  permissions:
+    github: read_only
+  budget:
+    session: 2
