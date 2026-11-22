@@ -1,0 +1,16 @@
+ellipsis:
+  kind: environment
+  name: all-repositories
+
+repositories:
+  - name: codex
+  - name: main
+  - name: ra
+  - name: railway
+  - name: s
+  - name: yt
+
+compute:
+  cpu: 2
+  memory: 8GB
+  timeout: 30m
