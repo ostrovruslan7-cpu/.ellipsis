@@ -1,0 +1,24 @@
+ellipsis:
+  kind: agent
+  name: dependency-upgrades
+
+trigger:
+  type: cron
+  schedule: '0 9 * * 1'
+
+session:
+  claude_code:
+    model: claude-opus-5-5
+    prompt: |
+      In each repository, upgrade outdated dependencies to their latest
+      minor and patch versions. Run the tests, fix what breaks, and open
+      one pull request per repository that lists each upgrade.
+  environment: all-repositories
+  permissions:
+    github:
+      repositories: [codex, main, ra, railway, s, yt]
+      permissions:
+        contents: write
+        pull_requests: write
+  budget:
+    session: 10
