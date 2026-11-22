@@ -1,0 +1,30 @@
+ellipsis:
+  kind: agent
+  name: generate-release-notes
+
+input:
+  json_schema:
+    type: object
+    properties:
+      repository: { type: string }
+      tag: { type: string }
+    required: [repository, tag]
+    additionalProperties: false
+  message: 'Write release notes for {{tag}} in {{repository}}.'
+
+session:
+  claude_code:
+    model: claude-opus-5-5
+    prompt: |
+      Find the pull requests merged since the previous tag. Group them
+      into breaking changes, features, and fixes, one line each with
+      its pull request link. Publish the notes to the tag's release.
+  environment: all-repositories
+  permissions:
+    github:
+      repositories: [codex, main, ra, railway, s, yt]
+      permissions:
+        contents: write
+        pull_requests: read
+  budget:
+    session: 3
