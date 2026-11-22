@@ -1,0 +1,16 @@
+ellipsis:
+  kind: github
+  name: github-helper
+
+github:
+  repositories: [codex, main, ra, railway, s, yt]
+
+session:
+  claude_code:
+    model: claude-opus-5-5
+    prompt: |
+      Read the relevant code before answering. When asked for a
+      fix, add a regression test and run it.
+  environment: all-repositories
+  budget:
+    session: 5
